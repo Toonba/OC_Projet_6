@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <head>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+        <title>Fisheye - photographe</title>
+    </head>
+    <body>
+        <header>
+            <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye home page" title="Retour à la page d'accueil" /></a>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+        <main id="main" aria-hidden="false">
+            <div class="photograph-header">
+                <button class="contact_button" aria-haspopup="dialog" aria-controls="dialog">Contactez-moi</button>
+            </div>
+        </main>
+        <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+            <div class="modal">
+                <header>
+                    <h2 class="modalTitle">Contactez-moi</h2>
+                    <img src="assets/icons/close.svg" class="close_button" tabindex="0" />
+                </header>
+                <form id="myForm" novalidate>
+                    <div>
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Jean" required />
+                        <span class="error"></span>
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" placeholder="Moulin" required />
+                        <span class="error"></span>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="jean.moulin@gmail.com" required />
+                        <span class="error"></span>
+                        <label for="message">Votre message</label>
+                        <textarea name="message" id="message" placeholder="Détailler votre demande ici" required></textarea>
+                        <span class="error"></span>
+                    </div>
+                    <input class="btn-submit" type="submit" value="Envoyer" />
+                </form>
+            </div>
+        </div>
+        <script src="scripts/factories/photographer.js"></script>
+        <script src="./scripts/pages/photographer.js"></script>
+        <script src="./scripts/utils/contactForm.js"></script>
+    </body>
 </html>

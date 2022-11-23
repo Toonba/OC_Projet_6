@@ -1,5 +1,4 @@
 async function getPhotographers() {
-    // récupérasion des données des photographer du json dans un tableau photographers (est ce que c'est depuis ici que je doit mettre les fichier des images dans le dossier asset ? ou alors faut juste reorganisé les fichiers pour que le dossier sample photo se retrouve dans asset et qu'on trie image pour chaque photographe. Possible de faire ça avec JS ? je vois pas quoi taper dans google pour trouv)
     let photographers = [
         {
             name: "Mimi Keel",
@@ -56,6 +55,7 @@ async function getPhotographers() {
             portrait: "MarcelNikolic.jpg",
         },
     ];
+
     // et bien retourner le tableau photographers seulement une fois
     return {
         //comprends pas trop ce qu'est censé faire, j'aurais tendance à vouloir mettre un return photographers tous simplement

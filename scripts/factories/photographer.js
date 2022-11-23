@@ -5,22 +5,22 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement("article");
         const link = document.createElement("a");
+        link.setAttribute("title", `Visiter la page de profile de ${name}`);
+        link.setAttribute("src", `./photographer.html?id=${id}`);
+        link.setAttribute("tabindex", "0");
         const img = document.createElement("img");
-        // si on veux un site accessible il faudrai également ajouter un attribut alt en plus non ?
         img.setAttribute("src", picture);
+        img.setAttribute("alt", `photo de : ${name}`);
         const div = document.createElement("div");
-        div.setAttribute("class", "img-container");
+        div.className = "img-container";
         const h2 = document.createElement("h2");
         h2.textContent = name;
-        const h3 = document.createElement("h3");
+        const h3 = document.createElement("h3"); // est ce que j'ai le "droit" d'utiliser un h3, ou d'un point de vu accessibilité c'est pas ouf ?
         h3.textContent = `${city}, ${country}`;
         const p = document.createElement("p");
         p.textContent = tagline;
         const span = document.createElement("span");
         span.textContent = `${price}€/jour`;
-        //Il faudra ajouter du code pour créer un H3 pour la localisation, un p pour le slogan et un autre p ou une span pour leur tarif, je le créerai sur la meme base que l'img ou le h2 et ferais un appendChild également pour les placer les un derrière les autres.
-        // les deux ligne ici nous permette de placer img et h2 à l'intérieur de notre balise article
-        //Comme on veut que la photo et le H2 soit cliquable je pense qu'il faudrait ajouter une balise a (qui link vers la page du photographe en fonction) et faire un article.appendChild(a) et un a.appendChild(img et h2)
         article.appendChild(link);
         link.appendChild(div);
         div.appendChild(img);
@@ -30,6 +30,27 @@ function photographerFactory(data) {
         article.appendChild(span);
         return article;
     }
+    // Est ce que je pourrais utiliser les même nom de variable ?
+    function getPhotograpHeaderDOM() {
+        const photograpHeader = document.getElementsByClassName("photograph-header");
+        const formButton = document.getElementsByClassName("contact_button");
+        const div = document.createElement("div");
+        div.className = "description-container";
+        const profilH2 = document.createElement("h2");
+        profilH2.textContent = name;
+        const profilH3 = document.createElement("h3");
+        profilH3.textContent = `${city}, ${country}`;
+        const profilP = document.createElement("p");
+        profilP.textContent = tagline;
+        const img = document.createElement("img");
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", `photo de : ${name}`);
+        photograpHeader[0].insertBefore(div, formButton[0]);
+        div.appendChild(profilH2);
+        div.appendChild(profilH3);
+        div.appendChild(profilP);
+        photograpHeader[0].appendChild(img);
+    }
     // je pense qu'ici on veux return tous nos paramètres présent dans l'objet pour pouvoir s'en servir plus tard
-    return {name, id, city, country, tagline, price, picture, getUserCardDOM};
+    return {name, id, city, country, tagline, price, picture, getUserCardDOM, getPhotograpHeaderDOM};
 }
