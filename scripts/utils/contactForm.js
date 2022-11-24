@@ -12,6 +12,9 @@ const error = document.getElementsByClassName("error");
 const textarea = document.getElementById("message");
 const myForm = document.getElementById("myForm");
 
+//variable
+let validationState = [];
+
 // Event listener to open or close modal : classic way + accessible way
 contactButton[0].addEventListener("click", displayModal);
 closeButton[0].addEventListener("click", closeModal);
@@ -42,14 +45,19 @@ function displayModal() {
     modal.setAttribute("aria-hidden", "false");
     modalBody[0].setAttribute("tabindex", "0");
     modalBody[0].focus();
+    isValid(prenom, 0);
+    isValid(nom, 1);
+    isValid(email, 2);
+    isValid(textarea, 3);
+    validationState = [];
 }
-
 // function closing modal and adding accessible attribute
 function closeModal() {
     modal.style.display = "none";
     main.setAttribute("aria-hidden", "false");
     modal.setAttribute("aria-hidden", "true");
     modalBody[0].removeAttribute("tabindex", "0");
+    myForm.reset();
 }
 
 //form validation
@@ -69,7 +77,6 @@ function notValid(input, spanNumber, message) {
     input.style.border = "2px solid rgb(200, 1, 1)";
     input.style.animation = "nop 0.2s 3";
     error[spanNumber].innerHTML = message;
-    validationState.push(false);
     input.setAttribute("aria-invalid", "true");
 }
 
@@ -77,40 +84,42 @@ function notValid(input, spanNumber, message) {
 function isValid(input, spanNumber) {
     error[spanNumber].style.display = "none";
     input.style.border = "none";
-    input.setAttribute("aria-invalid", "false");
     validationState.push(true);
+    input.setAttribute("aria-invalid", "false");
 }
 
 //function that check the validity of input
 function inputValidation(input, type, spanNumber, message) {
     if (type == "text") {
-        if (input.value == "" || input.value.length < 2 || input.value.trim() == false) {
-            notValid(input, spanNumber, message);
-        } else {
-            isValid(input, spanNumber);
-        }
+        input.addEventListener("focusout", function (e) {
+            if (input.value == "" || input.value.length < 2 || input.value.trim() == false) {
+                notValid(input, spanNumber, message);
+            } else {
+                isValid(input, spanNumber);
+            }
+        });
     } else if (type == "mail") {
-        if (input.value == "" || !input.value.match(emailRegEx)) {
-            notValid(input, spanNumber, message);
-        } else {
-            isValid(input, spanNumber);
-        }
+        input.addEventListener("focusout", function (e) {
+            if (input.value == "" || !input.value.match(emailRegEx)) {
+                notValid(input, spanNumber, message);
+            } else {
+                isValid(input, spanNumber);
+            }
+        });
     }
 }
-let validationState = [];
+inputValidation(prenom, "text", 0, messageErreurPrenom);
+inputValidation(nom, "text", 1, messageErreurNom);
+inputValidation(email, "mail", 2, messageErreurMail);
+inputValidation(textarea, "text", 3, messageErreurTextarea);
+
 submitBtn[0].addEventListener("click", function (e) {
     e.preventDefault();
-    validationState = [];
-    inputValidation(prenom, "text", 0, messageErreurPrenom);
-    inputValidation(nom, "text", 1, messageErreurNom);
-    inputValidation(email, "mail", 2, messageErreurMail);
-    inputValidation(textarea, "text", 3, messageErreurTextarea);
-    if (!validationState.includes(false)) {
+    if (!validationState.includes(false) && validationState.length == 4) {
         console.log(prenom.value);
         console.log(nom.value);
         console.log(email.value);
         console.log(textarea.value);
         closeModal();
-        location.reload();
     }
 });

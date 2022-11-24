@@ -35,6 +35,16 @@ body {
     cursor: pointer;
 }
 
+.contact_button:hover,
+.btn-submit:hover, .contact_button:focus, .btn-submit:focus {
+    background-color: #d3573c;
+    color: black;
+}
+
+.contact_button {
+    margin: 0 14rem;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #db8876;
@@ -99,4 +109,41 @@ form textarea {
 form .error {
     display: none;
     color: rgb(143, 1, 1);
+}
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photograph-header h2 {
+    color: #d3573c;
+    font-size: 52px;
+    margin: 0.5rem 0 0 0;
+}
+
+.photograph-header h3 {
+    color: #901c1c;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.photograph-header p {
+    font-size: 0.8rem;
+    margin: 0.2rem 0 0 0;
+}
+
+.photograph-header .img-container {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.photograph-header img {
+    aspect-ratio: 1/1;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
 }

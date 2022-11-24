@@ -6,7 +6,7 @@ function photographerFactory(data) {
         const article = document.createElement("article");
         const link = document.createElement("a");
         link.setAttribute("title", `Visiter la page de profile de ${name}`);
-        link.setAttribute("src", `./photographer.html?id=${id}`);
+        link.setAttribute("href", `./photographer.html?id=${id}`);
         link.setAttribute("tabindex", "0");
         const img = document.createElement("img");
         img.setAttribute("src", picture);
@@ -34,22 +34,25 @@ function photographerFactory(data) {
     function getPhotograpHeaderDOM() {
         const photograpHeader = document.getElementsByClassName("photograph-header");
         const formButton = document.getElementsByClassName("contact_button");
-        const div = document.createElement("div");
-        div.className = "description-container";
+        const textdiv = document.createElement("div");
+        textdiv.className = "description-container";
         const profilH2 = document.createElement("h2");
         profilH2.textContent = name;
         const profilH3 = document.createElement("h3");
         profilH3.textContent = `${city}, ${country}`;
         const profilP = document.createElement("p");
         profilP.textContent = tagline;
+        const imgdiv = document.createElement("div");
+        imgdiv.className = "img-container";
         const img = document.createElement("img");
         img.setAttribute("src", picture);
         img.setAttribute("alt", `photo de : ${name}`);
-        photograpHeader[0].insertBefore(div, formButton[0]);
-        div.appendChild(profilH2);
-        div.appendChild(profilH3);
-        div.appendChild(profilP);
-        photograpHeader[0].appendChild(img);
+        photograpHeader[0].insertBefore(textdiv, formButton[0]);
+        textdiv.appendChild(profilH2);
+        textdiv.appendChild(profilH3);
+        textdiv.appendChild(profilP);
+        photograpHeader[0].appendChild(imgdiv);
+        imgdiv.appendChild(img);
     }
     // je pense qu'ici on veux return tous nos paramètres présent dans l'objet pour pouvoir s'en servir plus tard
     return {name, id, city, country, tagline, price, picture, getUserCardDOM, getPhotograpHeaderDOM};
