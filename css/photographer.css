@@ -36,13 +36,15 @@ body {
 }
 
 .contact_button:hover,
-.btn-submit:hover, .contact_button:focus, .btn-submit:focus {
+.btn-submit:hover,
+.contact_button:focus,
+.btn-submit:focus {
     background-color: #d3573c;
     color: black;
 }
 
 .contact_button {
-    margin: 0 14rem;
+    margin: 0 auto;
 }
 
 .modal {
@@ -116,16 +118,20 @@ form .error {
     justify-content: space-around;
     align-items: center;
 }
-
+.photograph-header .description-container {
+    margin: 0 0 0 2rem;
+}
 .photograph-header h2 {
     color: #d3573c;
     font-size: 52px;
     margin: 0.5rem 0 0 0;
 }
 
-.photograph-header h3 {
+h3,
+.fa-solid,
+.likes {
     color: #901c1c;
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin: 0;
 }
 
@@ -139,6 +145,7 @@ form .error {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    margin: 0 2rem 0 0;
 }
 
 .photograph-header img {
@@ -146,4 +153,35 @@ form .error {
     height: 200px;
     object-fit: cover;
     object-position: center;
+}
+
+.galery {
+    margin: 1rem auto;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+}
+.galery .media-container {
+    width: 32%;
+}
+.media-container img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.mediaDescription-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mediaDescription-container .likes-container {
+    width: 16%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
