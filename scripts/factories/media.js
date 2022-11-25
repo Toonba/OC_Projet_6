@@ -4,7 +4,7 @@ function galeryFactory(data) {
 
     function getPhotographeGaleryDOM() {
         const sectionGalery = document.getElementsByClassName("galery");
-        const mediaContainer = document.createElement("div");
+        const mediaContainer = document.createElement("article");
         mediaContainer.className = "media-container";
         const img = document.createElement("img");
         img.setAttribute("src", picture);

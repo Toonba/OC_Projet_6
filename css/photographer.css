@@ -117,6 +117,7 @@ form .error {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 1rem;
 }
 .photograph-header .description-container {
     margin: 0 0 0 2rem;
@@ -128,7 +129,7 @@ form .error {
 }
 
 h3,
-.fa-solid,
+.fa-heart,
 .likes {
     color: #901c1c;
     font-size: 1.5rem;
@@ -155,12 +156,59 @@ h3,
     object-position: center;
 }
 
-.galery {
+.filter {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 90%;
     margin: 1rem auto;
-    width: 95%;
+}
+.filter i {
+    margin-left: 1rem;
+}
+.dropdown {
+    position: absolute;
+    left: 77.5px;
+    top: 0px;
+    display: none;
+    margin-left: 1rem;
+    background-color: #901c1c;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.dropdown li {
+    border-top: solid 1px white;
+    padding: 1rem;
+    width: 143px;
+}
+.dropdown li:first-child {
+    border-top: none;
+}
+.filter-button {
+    display: flex;
+    justify-content: space-between;
+    width: 143px;
+    padding: 1rem;
+    margin-left: 1rem;
+    background-color: #901c1c;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.galery {
+    margin: 4rem auto;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: space-between;
     gap: 1rem;
 }
 .galery .media-container {
