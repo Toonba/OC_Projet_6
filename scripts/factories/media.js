@@ -9,6 +9,7 @@ function galeryFactory(data) {
         const img = document.createElement("img");
         img.setAttribute("src", picture);
         img.setAttribute("alt", title);
+        img.className = "lightbox-media";
         const mediaDescription = document.createElement("aside");
         mediaDescription.className = "mediaDescription-container";
         const h3 = document.createElement("h3");
