@@ -1,6 +1,6 @@
 async function getPhotographers() {
-    const response = await fetch("data/photographers.json")
-    return await response.json()
+    const response = await fetch("data/photographers.json");
+    return await response.json();
     //comprends pas trop ce qu'est censé faire, j'aurais tendance à vouloir mettre un return photographers tous simplement;
 }
 

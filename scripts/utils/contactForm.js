@@ -12,7 +12,16 @@ const error = document.getElementsByClassName("error");
 const textarea = document.getElementById("message");
 const myForm = document.getElementById("myForm");
 
-//variable
+//error message
+const messageErreurPrenom = "Vous devez indiqué votre prénom, il doit contenir au moins 2 lettres";
+const messageErreurNom = "Vous devez indiqué votre nom, il doit contenir au moins 2 lettres";
+const messageErreurMail = "Vous devez renseigner une adresse mail valide";
+const messageErreurTextarea = "Vous ne pouvez pas envoyer un message vide";
+
+//Variables
+let myInput = [prenom, nom, email, textarea];
+let myType = ["text", "text", "mail", "text"];
+let myMessages = [messageErreurPrenom, messageErreurNom, messageErreurMail, messageErreurTextarea];
 let validationState = [];
 
 // Event listener to open or close modal : classic way + accessible way
@@ -58,18 +67,13 @@ function closeModal() {
     modal.setAttribute("aria-hidden", "true");
     modalBody[0].removeAttribute("tabindex", "0");
     myForm.reset();
+    contactButton[0].focus();
 }
 
 //form validation
 
 //regex
 const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-//error message
-const messageErreurPrenom = "Vous devez indiqué votre prénom, il doit contenir au moins 2 lettres";
-const messageErreurNom = "Vous devez indiqué votre nom, il doit contenir au moins 2 lettres";
-const messageErreurMail = "Vous devez renseigner une adresse mail valide";
-const messageErreurTextarea = "Vous ne pouvez pas envoyer un message vide";
 
 // add specific layout if an input isn't valid
 function notValid(input, spanNumber, message) {
@@ -88,33 +92,37 @@ function isValid(input, spanNumber) {
     input.setAttribute("aria-invalid", "false");
 }
 
+//sortir la fonction de l'event lsitener pour pouvoir gerer focusout ou click
+
 //function that check the validity of input
 function inputValidation(input, type, spanNumber, message) {
     if (type == "text") {
-        input.addEventListener("focusout", function (e) {
-            if (input.value == "" || input.value.length < 2 || input.value.trim() == false) {
-                notValid(input, spanNumber, message);
-            } else {
-                isValid(input, spanNumber);
-            }
-        });
-    } else if (type == "mail") {
-        input.addEventListener("focusout", function (e) {
-            if (input.value == "" || !input.value.match(emailRegEx)) {
-                notValid(input, spanNumber, message);
-            } else {
-                isValid(input, spanNumber);
-            }
-        });
-    }
+        if (input.value == "" || input.value.length < 2 || input.value.trim() == false) {
+            notValid(input, spanNumber, message);
+            return false;
+        } else {
+            isValid(input, spanNumber);
+        }
+    } else if (type == "mail")
+        if (input.value == "" || !input.value.match(emailRegEx)) {
+            notValid(input, spanNumber, message);
+            return false;
+        } else {
+            isValid(input, spanNumber);
+        }
 }
-inputValidation(prenom, "text", 0, messageErreurPrenom);
-inputValidation(nom, "text", 1, messageErreurNom);
-inputValidation(email, "mail", 2, messageErreurMail);
-inputValidation(textarea, "text", 3, messageErreurTextarea);
+
+for (let i = 0; i < myInput.length; i++) {
+    myInput[i].addEventListener("focusout", function (e) {
+        inputValidation(myInput[i], myType[i], i, myMessages[i]);
+    });
+}
 
 submitBtn[0].addEventListener("click", function (e) {
     e.preventDefault();
+    for (let i = 0; i < myInput.length; i++) {
+        inputValidation(myInput[i], myType[i], i, myMessages[i]);
+    }
     if (!validationState.includes(false) && validationState.length == 4) {
         console.log(prenom.value);
         console.log(nom.value);

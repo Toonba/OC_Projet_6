@@ -9,31 +9,43 @@
         <title>Fisheye - photographe</title>
     </head>
     <body>
-        <header>
+        <header class="main-header">
             <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye home page" title="Retour à la page d'accueil" /></a>
         </header>
         <main id="main" aria-hidden="false">
             <header class="photograph-header">
                 <button class="contact_button" aria-haspopup="dialog">Contactez-moi</button>
             </header>
-            <aside class="filter" tabindex="0">
+
+            <!-- <section class="loader">
+                <div class="loader-icone-visible">
+                    <div class="loader-icone-hidden">
+                        <i class="fa-solid fa-image"></i>
+                        <i class="fa-solid fa-camera"></i>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+            </section> -->
+
+            <section class="listbox">
                 <p>Trier par</p>
-                <div class="dorpdown">
-                    <div class="select">
+                <div class="dropdown" role="trier" aria-expanded="false">
+                    <button class="select" type="button" aria-haspopup="listbox" tabindex="0">
                         <span class="selected">Popularité</span>
                         <div class="arrow"></div>
-                    </div>
-                    <ul class="menu">
-                        <li class="active">Popularité</li>
-                        <li>Date</li>
-                        <li>Titre</li>
+                    </button>
+                    <ul class="menu" aria-hidden="true">
+                        <li class="active" tabindex="0">Popularité</li>
+                        <li tabindex="0">Date</li>
+                        <li tabindex="0">Titre</li>
                     </ul>
                 </div>
-            </aside>
+            </section>
             <section class="galery"></section>
         </main>
+
         <!--Contact modal-->
-        <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+        <section id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
             <div class="modal">
                 <header>
                     <h2 class="modalTitle" id="modalTitle">Contactez-moi</h2>
@@ -57,16 +69,23 @@
                     <input class="btn-submit" type="submit" value="Envoyer" />
                 </form>
             </div>
-        </div>
+        </section>
+
         <!--Lightbox-->
-        <div id="lightbox" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
-            <div class="lightbox-body"></div>
-        </div>
+        <section id="lightbox" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+            <div class="lightbox-body">
+                <div class="lightbox-close-button" tabindex="0"><i class="fa-solid fa-xmark"></i></div>
+                <div class="previous" tabindex="0"><i class="fa-solid fa-chevron-left"></i></div>
+                <img class="current" src="" alt="" />
+                <div class="next" tabindex="0"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+        </section>
         <script src="scripts/factories/media.js"></script>
         <script src="scripts/factories/photographer.js"></script>
-        <script src="scripts/utils/sort.js"></script>
         <script src="./scripts/pages/photographer.js"></script>
         <script src="./scripts/pages/media.js"></script>
+        <script src="scripts/utils/sort.js"></script>
+        <script src="scripts/utils/lightbox.js"></script>
         <script src="./scripts/utils/contactForm.js"></script>
     </body>
 </html>
