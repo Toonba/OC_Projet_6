@@ -42,24 +42,27 @@ select.addEventListener("keydown", function (e) {
 });
 
 //Hide dropdown and replace the filter by the option choosed
-for (let i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function (e) {
-        selected.textContent = options[i].textContent;
-        closeDropdown();
-        options[i].classList.add("active");
-        galeryDOM[0].innerHTML = "";
-        sortGalery(mediaById, options[i].textContent);
-        // getphotographerGalery(,options[i].textContent)
-    });
-    options[i].addEventListener("keydown", function (e) {
-        if (e.key == "Enter") {
+function sortEvent() {
+    for (let i = 0; i < options.length; i++) {
+        options[i].addEventListener("click", function (e) {
             selected.textContent = options[i].textContent;
             closeDropdown();
             options[i].classList.add("active");
             galeryDOM[0].innerHTML = "";
             sortGalery(mediaById, options[i].textContent);
-        }
-    });
+            Lightbox.init();
+            // getphotographerGalery(,options[i].textContent)
+        });
+        options[i].addEventListener("keydown", function (e) {
+            if (e.key == "Enter") {
+                selected.textContent = options[i].textContent;
+                closeDropdown();
+                options[i].classList.add("active");
+                galeryDOM[0].innerHTML = "";
+                sortGalery(mediaById, options[i].textContent);
+            }
+        });
+    }
 }
 
 // sorting function

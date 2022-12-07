@@ -126,7 +126,7 @@
 .modal {
     border-radius: 5px;
     background-color: #db8876;
-    width: ;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -140,12 +140,18 @@
     width: 100%;
 }
 
-.modal header img {
-    cursor: pointer;
+.modal header button {
+    background-color: transparent;
+    border: none;
 }
 
-.modal header h2 {
-    font-size: 5vw;
+.modal header img {
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modalTitle {
+    font-size: 4vw;
     font-weight: normal;
     text-align: center;
 }
@@ -344,6 +350,7 @@ h3,
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .mediaDescription-container {
@@ -363,8 +370,29 @@ h3,
     justify-content: space-between;
     align-items: center;
 }
-#lightbox {
-    display: none;
+
+.like-invoice {
+    background-color: #db8876;
+    width: 25%;
+    position: fixed;
+    bottom: 0px;
+    right: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.like-invoice .likes-container {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+.like-invoice .fa-heart {
+    color: black;
+}
+
+.lightbox {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -382,6 +410,12 @@ h3,
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .fa-chevron-right,
 .fa-chevron-left,
 .fa-xmark {
@@ -397,11 +431,19 @@ h3,
     right: 5px;
 }
 
-.lightbox-body img {
+.current img {
     aspect-ratio: 1/1;
     width: 90%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     border-radius: 5px;
 }
+
+.current video {
+    aspect-ratio: 1/1;
+    width: 80%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 5px;
+}
+

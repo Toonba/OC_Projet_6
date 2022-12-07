@@ -5,7 +5,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement("article");
         const link = document.createElement("a");
-        link.setAttribute("title", `Visiter la page de profile de ${name}`);
+        link.setAttribute("title", `Visiter la page de profile de ${name}?`);
         link.setAttribute("href", `./photographer.html?id=${id}`);
         link.setAttribute("tabindex", "0");
         const img = document.createElement("img");
@@ -53,6 +53,8 @@ function photographerFactory(data) {
         textdiv.appendChild(profilP);
         photograpHeader[0].appendChild(imgdiv);
         imgdiv.appendChild(img);
+        const invoice = document.getElementsByClassName("invoice");
+        invoice[0].textContent = `${price}€ / jour`;
     }
     // je pense qu'ici on veux return tous nos paramètres présent dans l'objet pour pouvoir s'en servir plus tard
     return {name, id, city, country, tagline, price, picture, getUserCardDOM, getPhotograpHeaderDOM};

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="fr">
     <head>
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/59d113e09e.js" crossorigin="anonymous"></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
         <title>Fisheye - photographe</title>
     </head>
     <body>
@@ -29,10 +29,10 @@
 
             <section class="listbox">
                 <p>Trier par</p>
-                <div class="dropdown" role="trier" aria-expanded="false">
+                <div class="dropdown" role="listbox" aria-expanded="false">
                     <button class="select" type="button" aria-haspopup="listbox" tabindex="0">
                         <span class="selected">Popularité</span>
-                        <div class="arrow"></div>
+                        <span class="arrow"></span>
                     </button>
                     <ul class="menu" aria-hidden="true">
                         <li class="active" tabindex="0">Popularité</li>
@@ -42,6 +42,14 @@
                 </div>
             </section>
             <section class="galery"></section>
+
+            <aside class="like-invoice">
+                <div class="likes-container">
+                    <p class="likes-number"></p>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <p class="invoice"></p>
+            </aside>
         </main>
 
         <!--Contact modal-->
@@ -49,35 +57,25 @@
             <div class="modal">
                 <header>
                     <h2 class="modalTitle" id="modalTitle">Contactez-moi</h2>
-                    <img src="assets/icons/close.svg" class="close_button" tabindex="0" alt="bouton de fermeture" />
+                    <button class="close_button"><img src="assets/icons/close.svg" alt="bouton de fermeture" /></button>
                 </header>
                 <form id="myForm" novalidate>
                     <div>
                         <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom" placeholder="Jean" required />
+                        <input type="text" id="prenom" name="prenom" required />
                         <span class="error"></span>
                         <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom" placeholder="Moulin" required />
+                        <input type="text" id="nom" name="nom" required />
                         <span class="error"></span>
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="jean.moulin@gmail.com" required />
+                        <input type="email" id="email" name="email" required />
                         <span class="error"></span>
                         <label for="message">Votre message</label>
-                        <textarea name="message" id="message" placeholder="Détailler votre demande ici" required></textarea>
+                        <textarea name="message" id="message" required></textarea>
                         <span class="error"></span>
                     </div>
                     <input class="btn-submit" type="submit" value="Envoyer" />
                 </form>
-            </div>
-        </section>
-
-        <!--Lightbox-->
-        <section id="lightbox" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
-            <div class="lightbox-body">
-                <div class="lightbox-close-button" tabindex="0"><i class="fa-solid fa-xmark"></i></div>
-                <div class="previous" tabindex="0"><i class="fa-solid fa-chevron-left"></i></div>
-                <img class="current" src="" alt="" />
-                <div class="next" tabindex="0"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
         </section>
         <script src="scripts/factories/media.js"></script>
@@ -85,7 +83,10 @@
         <script src="./scripts/pages/photographer.js"></script>
         <script src="./scripts/pages/media.js"></script>
         <script src="scripts/utils/sort.js"></script>
-        <script src="scripts/utils/lightbox.js"></script>
+        <!-- <script src="scripts/utils/lightbox.js"></script> -->
         <script src="./scripts/utils/contactForm.js"></script>
+        <script src="./scripts/utils/LightboxTest.js"></script>
+        <script src="./scripts/utils/likes.js"></script>
+        <script src="https://kit.fontawesome.com/59d113e09e.js" crossorigin="anonymous"></script>
     </body>
 </html>

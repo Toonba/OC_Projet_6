@@ -17,7 +17,10 @@ async function displayGalery(media) {
 async function init() {
     const {media} = await getPhotographersMedia();
     displayGalery(media);
-    LightboxEventopen();
+    sortEvent();
+    sumLikes(mediaById);
+    // LightboxEventopen();
+    Lightbox.init();
 }
 
 init();

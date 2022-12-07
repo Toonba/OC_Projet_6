@@ -1,4 +1,4 @@
-@import url("photographer.css");
+@import url("./photographer.css");
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -65,6 +65,7 @@ h1 {
     color: #d3573c;
     font-size: 36px;
     margin: 0.5rem 0 0 0;
+    text-align: center;
 }
 
 .photographer_section article h3 {
@@ -80,5 +81,25 @@ h1 {
 }
 
 .photographer_section article span {
-    color: grey;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 992px) {
+    #contact_modal {
+        width: 90%;
+        background-color: #26489a;
+    }
+    .photograph-header .description-container {
+        width: 340px;
+    }
+    .photographer_section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    form label {
+        color: #901c1c;
+        font-size: 36px;
+    }
 }

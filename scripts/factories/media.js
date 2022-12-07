@@ -20,14 +20,12 @@ function galeryFactory(data) {
             const vdo = document.createElement("video");
             vdo.className = "lightbox-media";
             vdo.setAttribute("controle", "");
+            vdo.setAttribute("src", mp4);
             // vdo.setAttribute("autoplay", "");
             vdo.setAttribute("role", "button");
             vdo.setAttribute("alt", title);
             vdo.setAttribute("tabindex", "0");
-            const source = document.createElement("source");
-            source.setAttribute("src", mp4);
             mediaContainer.appendChild(vdo);
-            vdo.appendChild(source);
         }
         const mediaDescription = document.createElement("aside");
         mediaDescription.className = "mediaDescription-container";
@@ -39,7 +37,7 @@ function galeryFactory(data) {
         nblike.className = "likes";
         nblike.textContent = likes;
         const heart = document.createElement("i");
-        heart.className = "fa-solid fa-heart";
+        heart.className = "fa-solid fa-heart like-button";
         heart.setAttribute("tabindex", "0");
         sectionGalery[0].appendChild(mediaContainer);
         mediaContainer.appendChild(mediaDescription);

@@ -1,5 +1,12 @@
 async function getPhotographers() {
-    const response = await fetch("data/photographers.json");
+    //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch pour pb firefox
+    //https://stackoverflow.com/questions/17088609/disable-firefox-same-origin-policy
+    const response = await fetch("data/photographers.json", {
+        method: "GET", // or 'PUT'
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
     return await response.json();
     //comprends pas trop ce qu'est censé faire, j'aurais tendance à vouloir mettre un return photographers tous simplement;
 }
