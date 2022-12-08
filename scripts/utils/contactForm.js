@@ -4,12 +4,12 @@ const modal = document.getElementById("contact_modal");
 const contactButton = document.getElementsByClassName("contact_button");
 const closeButton = document.getElementsByClassName("close_button");
 const modalBody = document.getElementsByClassName("modal");
-const prenom = document.getElementById("prenom");
-const nom = document.getElementById("nom");
-const email = document.getElementById("email");
+const inputPrenom = document.getElementById("prenom");
+const inputNom = document.getElementById("nom");
+const inputEmail = document.getElementById("email");
+const inputTextarea = document.getElementById("message");
 const submitBtn = document.getElementsByClassName("btn-submit");
 const error = document.getElementsByClassName("error");
-const textarea = document.getElementById("message");
 const myForm = document.getElementById("myForm");
 
 //error message
@@ -18,34 +18,23 @@ const messageErreurNom = "Vous devez indiqué votre nom, il doit contenir au moi
 const messageErreurMail = "Vous devez renseigner une adresse mail valide";
 const messageErreurTextarea = "Vous ne pouvez pas envoyer un message vide";
 
-//Variables
+//objet input, each Input object represent all the data related to 1 input and needed for the validation and layout validation of this input.
+class obj {
+    constructor(input, type, span, message) {
+        this.input = input;
+        this.type = type;
+        this.span = span;
+        this.message = message;
+    }
+}
+let prenom = new obj(inputPrenom, "text", 0, messageErreurPrenom);
+let nom = new obj(inputNom, "text", 1, messageErreurNom);
+let email = new obj(inputEmail, "mail", 2, messageErreurMail);
+let textarea = new obj(inputTextarea, "text", 3, messageErreurTextarea);
+
+//Variable
 let myInput = [prenom, nom, email, textarea];
-let myType = ["text", "text", "mail", "text"];
-let myMessages = [messageErreurPrenom, messageErreurNom, messageErreurMail, messageErreurTextarea];
 let validationState = [];
-
-// Event listener to open or close modal : classic way + accessible way
-contactButton[0].addEventListener("click", displayModal);
-closeButton[0].addEventListener("click", closeModal);
-window.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-        e.preventDefault();
-        closeModal(e);
-    }
-});
-contactButton[0].addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        displayModal(e);
-    }
-});
-
-closeButton[0].addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        closeModal(e);
-    }
-});
 
 // function openning modal and adding accessible attribute
 function displayModal() {
@@ -53,11 +42,10 @@ function displayModal() {
     main.setAttribute("aria-hidden", "true");
     modal.setAttribute("aria-hidden", "false");
     modalBody[0].setAttribute("tabindex", "0");
-    modalBody[0].focus();
-    isValid(prenom, 0);
-    isValid(nom, 1);
-    isValid(email, 2);
-    isValid(textarea, 3);
+    prenom.input.focus();
+    myInput.forEach((element) => {
+        isValid(element);
+    });
     validationState = [];
 }
 // function closing modal and adding accessible attribute
@@ -71,63 +59,94 @@ function closeModal() {
 }
 
 //form validation
-
 //regex
 const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 // add specific layout if an input isn't valid
-function notValid(input, spanNumber, message) {
-    error[spanNumber].style.display = "block";
-    input.style.border = "2px solid rgb(200, 1, 1)";
-    input.style.animation = "nop 0.2s 3";
-    error[spanNumber].innerHTML = message;
-    input.setAttribute("aria-invalid", "true");
+//for the next 3 function param {obj} refer to Input object
+function notValid(obj) {
+    error[obj.span].style.display = "block";
+    obj.input.style.border = "2px solid rgb(200, 1, 1)";
+    obj.input.style.animation = "nop 0.2s 3";
+    error[obj.span].innerHTML = obj.message;
+    obj.input.setAttribute("aria-invalid", "true");
+    error[obj.span].setAttribute("tabindex", "0");
+    error[obj.span].focus();
 }
 
 // Remove specific layout once an input is valid
-function isValid(input, spanNumber) {
-    error[spanNumber].style.display = "none";
-    input.style.border = "none";
+function isValid(obj) {
+    error[obj.span].style.display = "none";
+    obj.input.style.border = "none";
     validationState.push(true);
-    input.setAttribute("aria-invalid", "false");
+    obj.input.setAttribute("aria-invalid", "false");
 }
-
-//sortir la fonction de l'event lsitener pour pouvoir gerer focusout ou click
 
 //function that check the validity of input
-function inputValidation(input, type, spanNumber, message) {
-    if (type == "text") {
-        if (input.value == "" || input.value.length < 2 || input.value.trim() == false) {
-            notValid(input, spanNumber, message);
+function inputValidation(obj) {
+    if (obj.type == "text") {
+        if (obj.input.value == "" || obj.input.value.length < 2 || obj.input.value.trim() == false) {
+            notValid(obj);
             return false;
         } else {
-            isValid(input, spanNumber);
+            isValid(obj);
         }
-    } else if (type == "mail")
-        if (input.value == "" || !input.value.match(emailRegEx)) {
-            notValid(input, spanNumber, message);
+    } else if (obj.type == "mail")
+        if (obj.input.value == "" || !obj.input.value.match(emailRegEx)) {
+            notValid(obj);
             return false;
         } else {
-            isValid(input, spanNumber);
+            isValid(obj);
         }
 }
 
-for (let i = 0; i < myInput.length; i++) {
-    myInput[i].addEventListener("focusout", function (e) {
-        inputValidation(myInput[i], myType[i], i, myMessages[i]);
+// Event listner to show error when focus out
+myInput.forEach((element) => {
+    element.input.addEventListener("focusout", function (e) {
+        inputValidation(element);
+    });
+});
+
+function modalEvent() {
+    //open modal with mouse
+    contactButton[0].addEventListener("click", displayModal);
+    //close modal with mouse
+    closeButton[0].addEventListener("click", closeModal);
+    //open with keyboard
+    contactButton[0].addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            displayModal(e);
+        }
+    });
+    //close with keyboard
+    window.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            e.preventDefault();
+            closeModal(e);
+        }
+    });
+    closeButton[0].addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            closeModal(e);
+        }
+    });
+    //event listener to ensure form is correctly handled before submiting
+    submitBtn[0].addEventListener("click", function (e) {
+        e.preventDefault();
+        validationState = [];
+        console.log(validationState);
+        myInput.forEach((element) => {
+            inputValidation(element);
+        });
+        console.log(validationState);
+        if (!validationState.includes(false) && validationState.length == 4) {
+            console.log(prenom.input.value);
+            console.log(nom.input.value);
+            console.log(email.input.value);
+            console.log(textarea.input.value);
+            closeModal();
+        }
     });
 }
-
-submitBtn[0].addEventListener("click", function (e) {
-    e.preventDefault();
-    for (let i = 0; i < myInput.length; i++) {
-        inputValidation(myInput[i], myType[i], i, myMessages[i]);
-    }
-    if (!validationState.includes(false) && validationState.length == 4) {
-        console.log(prenom.value);
-        console.log(nom.value);
-        console.log(email.value);
-        console.log(textarea.value);
-        closeModal();
-    }
-});

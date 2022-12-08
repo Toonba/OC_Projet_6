@@ -440,10 +440,8 @@ h3,
 }
 
 .current video {
-    aspect-ratio: 1/1;
     width: 80%;
     object-fit: contain;
     object-position: center;
     border-radius: 5px;
 }
-

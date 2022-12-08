@@ -1,9 +1,7 @@
-// faire des bouton plutôt pis un select aussi pour le dropdown
-
-//Get all dropdowns from the doc
+//Get dropdowns from the doc
 const dropdown = document.querySelector(".dropdown");
 
-// get inner elements from each dropdown, with a loop
+//get inner elements from each dropdown
 const select = document.querySelector(".select");
 const arrow = document.querySelector(".arrow");
 const menu = document.querySelector(".menu");
@@ -41,29 +39,23 @@ select.addEventListener("keydown", function (e) {
     }
 });
 
-//Hide dropdown and replace the filter by the option choosed
-function sortEvent() {
-    for (let i = 0; i < options.length; i++) {
-        options[i].addEventListener("click", function (e) {
-            selected.textContent = options[i].textContent;
+//Hide dropdown, sort gallery and replace the filter by the option choosed
+options.forEach((element) => {
+    element.addEventListener("click", function (e) {
+        selected.textContent = element.textContent;
+        closeDropdown();
+        element.classList.add("active");
+        displayGallery(mediaById, element.textContent);
+    });
+    element.addEventListener("keydown", function (e) {
+        if (e.key == "Enter") {
+            selected.textContent = element.textContent;
             closeDropdown();
-            options[i].classList.add("active");
-            galeryDOM[0].innerHTML = "";
-            sortGalery(mediaById, options[i].textContent);
-            Lightbox.init();
-            // getphotographerGalery(,options[i].textContent)
-        });
-        options[i].addEventListener("keydown", function (e) {
-            if (e.key == "Enter") {
-                selected.textContent = options[i].textContent;
-                closeDropdown();
-                options[i].classList.add("active");
-                galeryDOM[0].innerHTML = "";
-                sortGalery(mediaById, options[i].textContent);
-            }
-        });
-    }
-}
+            element.classList.add("active");
+            displayGallery(mediaById, element.textContent);
+        }
+    });
+});
 
 // sorting function
 function sortGalery(array, filter) {
@@ -78,11 +70,6 @@ function sortGalery(array, filter) {
                     return 0;
                 }
             });
-            mediaById.forEach((element) => {
-                photographerGalery = galeryFactory(element);
-                photographerGalery.getPhotographeGaleryDOM();
-            });
-            select.focus();
             break;
         case "Date":
             array.sort(function compare(a, b) {
@@ -94,10 +81,6 @@ function sortGalery(array, filter) {
                     return 0;
                 }
             });
-            mediaById.forEach((element) => {
-                photographerGalery = galeryFactory(element);
-                photographerGalery.getPhotographeGaleryDOM();
-            });
             break;
         case "Titre":
             array.sort(function compare(a, b) {
@@ -108,10 +91,6 @@ function sortGalery(array, filter) {
                 } else {
                     return 0;
                 }
-            });
-            mediaById.forEach((element) => {
-                photographerGalery = galeryFactory(element);
-                photographerGalery.getPhotographeGaleryDOM();
             });
             break;
     }

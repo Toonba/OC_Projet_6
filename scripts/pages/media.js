@@ -3,24 +3,34 @@ async function getPhotographersMedia() {
     return await response.json();
 }
 let mediaById = [];
-async function displayGalery(media) {
+function getMediaById(array) {
     let urlId = new URLSearchParams(window.location.search).get("id");
-    for (let i = 0; i < media.length; i++) {
-        if (urlId == media[i].photographerId) {
-            mediaById.push(media[i]);
+    for (let i = 0; i < array.length; i++) {
+        if (urlId == array[i].photographerId) {
+            mediaById.push(array[i]);
         }
     }
-    sortGalery(mediaById, "Popularité");
     return mediaById;
+}
+
+//Est ce que c'est vraiment nécéssaire le async ici ?
+function displayGallery(array, filter) {
+    sortGalery(array, filter);
+    const sectionGalery = document.querySelector(".galery");
+    sectionGalery.innerHTML = "";
+    array.forEach((element) => {
+        const photographerMedia = galleryFactory(element);
+        const mediaCardDOM = photographerMedia.getPhotographeGaleryDOM();
+        sectionGalery.appendChild(mediaCardDOM);
+    });
+    Lightbox.init();
+    updateLikes(array);
 }
 
 async function init() {
     const {media} = await getPhotographersMedia();
-    displayGalery(media);
-    sortEvent();
-    sumLikes(mediaById);
-    // LightboxEventopen();
-    Lightbox.init();
+    getMediaById(media);
+    displayGallery(mediaById, "Popularité");
 }
 
 init();
