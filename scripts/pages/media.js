@@ -31,6 +31,8 @@ async function init() {
     const {media} = await getPhotographersMedia();
     getMediaById(media);
     displayGallery(mediaById, "Popularité");
+    sumLikes(mediaById);
+    setOrginalLikes(mediaById);
 }
 
 init();

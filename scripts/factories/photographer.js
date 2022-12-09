@@ -64,7 +64,6 @@ function photographerFactory(data) {
         // invoice[0].textContent = `${price}€ / jour`;
         const invoice = document.querySelector(".invoice");
         invoice.textContent = `${price}€ / jour`;
-        sumLikes(mediaById);
         return photograpHeader;
     }
     return {name, id, city, country, tagline, price, picture, getUserCardDOM, getPhotograpHeaderDOM};

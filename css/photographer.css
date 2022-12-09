@@ -51,42 +51,6 @@
     padding: 0 4rem;
 }
 
-@keyframes loader-disapear {
-    0% {
-        z-index: 2;
-        opacity: 1;
-    }
-    99% {
-        z-index: 2;
-        opacity: 1;
-    }
-    100% {
-        z-index: -1;
-        opacity: 0;
-    }
-}
-
-@keyframes defilement {
-    0% {
-        transform: translateX(-28rem);
-    }
-    25%,
-    30% {
-        transform: translateX(-14rem);
-    }
-    50%,
-    55% {
-        transform: translateX(0.3rem);
-    }
-    75%,
-    80% {
-        transform: translateX(14rem);
-    }
-    100% {
-        transform: translateX(30rem);
-    }
-}
-
 /*Modal*/
 #contact_modal {
     display: none;
