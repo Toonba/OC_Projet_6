@@ -7,7 +7,7 @@ function galleryFactory(data) {
         const mediaContainer = document.createElement("article");
         mediaContainer.className = "media-container";
         if (image !== undefined) {
-            mediaContainer.innerHTML = `<img class="lightbox-media" src="${picture}" role="button" alt="${title}" tabindex="0"><aside class="mediaDescription-container"><h3>${title}</h3><div class="likes-container"><span class="likes">${likes}</span><i class="fa-solid fa-heart like-button" tabindex="0"></i></div></aside>`;
+            mediaContainer.innerHTML = `<img class="lightbox-media" src="${picture}" role="button" alt="${title}" tabindex="0"><aside class="mediaDescription-container"><h4>${title}</h4><div class="likes-container"><span class="likes">${likes}</span><i class="fa-solid fa-heart like-button" tabindex="0"></i></div></aside>`;
             // const img = document.createElement("img");
             // img.className = "lightbox-media";
             // img.setAttribute("src", picture);
@@ -17,7 +17,7 @@ function galleryFactory(data) {
             // mediaContainer.appendChild(img);
         }
         if (video !== undefined) {
-            mediaContainer.innerHTML = `<video class="lightbox-media" controle="" src="${mp4}" role="button" alt="${title}" tabindex="0"></video><aside class="mediaDescription-container"><h3>${title}</h3><div class="likes-container"><span class="likes">${likes}</span><i class="fa-solid fa-heart like-button" tabindex="0"></i></div></aside>`;
+            mediaContainer.innerHTML = `<video class="lightbox-media" controle="" src="${mp4}" role="button" alt="${title}" tabindex="0"></video><aside class="mediaDescription-container"><h4>${title}</h4><div class="likes-container"><span class="likes">${likes}</span><i class="fa-solid fa-heart like-button" tabindex="0"></i></div></aside>`;
 
             // const vdo = document.createElement("video");
             // vdo.className = "lightbox-media";

@@ -84,26 +84,93 @@ h1 {
     opacity: 0.5;
 }
 
-@media screen and (max-width: 778px) {
-    .main-header {
-        background-color: #901c1c;
-    }
+@media screen and (max-width: 950px) {
     #contact_modal {
-        width: 90%;
-        background-color: #26489a;
+        width: 80%;
     }
-    .photograph-header .description-container {
-        width: 340px;
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    header .logo {
+        margin-left: 0px;
+    }
+    header h1 {
+        margin-right: 0px;
     }
     .photographer_section {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 5rem;
+    }
+    .photograph-header {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-around;
+        height: 400px;
+        width: 90%;
+    }
+    .error {
+        font-size: 1.8vw;
+    }
+    .contact_button {
+        margin: 0;
+    }
+    .photograph-header .description-container {
+        margin: 0;
+        text-align: center;
+    }
+    .photograph-header .img-container {
+        margin: 0;
+    }
+    .galery {
+        justify-content: center;
+    }
+    .media-container {
+        width: 70%;
+    }
+    h4,
+    .fa-heart,
+    .likes {
+        color: #901c1c;
+        font-size: 3vw;
+        margin: 0;
+    }
+    .modal header {
+        flex-direction: row;
+        justify-content: space-between;
+        height: auto;
+    }
+    .modalTitle {
+        font-size: 5vw;
+    }
+    .modal header img {
+        height: 5vw;
     }
     form label {
-        color: #901c1c;
-        font-size: 36px;
+        font-size: 2.5vw;
+        margin: 0.2rem;
+    }
+    .lightbox-body {
+        width: 100%;
+    }
+
+    .lightbox-close-button {
+        top: 100px;
+    }
+    .like-invoice {
+        width: 80%;
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .btn-submit {
+        font-size: 3vw;
+        width: 25vw;
+        height: 9vw;
     }
 }
 
