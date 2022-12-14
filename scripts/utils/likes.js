@@ -1,43 +1,51 @@
-//DOM
+/* eslint-disable no-unused-vars */
+// DOM
 const likesTotalNumber = document.getElementsByClassName("likes-total-number");
 const likeButton = document.getElementsByClassName("like-button");
 const likes = document.getElementsByClassName("likes");
-// const likes = document.querySelectorAll(".likes");
-const currentlikes = Array.from(document.querySelectorAll(".likes"));
 
-//variables
+// variables
 let totalLikes = 0;
 function sumLikes(array) {
-    // for (let i = 0; i < array.length; i++) {
-    //     totalLikes += array[;
-    // }
-    array.forEach((element) => {
-        totalLikes += element.likes;
-    });
-    likesTotalNumber[0].textContent = totalLikes;
-    return totalLikes;
+  array.forEach((element) => {
+    totalLikes += element.likes;
+  });
+  likesTotalNumber[0].textContent = totalLikes;
+  return totalLikes;
 }
 
 function setOrginalLikes(array) {
-    array.forEach((element) => {
-        element.originalLikes = element.likes;
-    });
+  array.forEach((element) => {
+    element.originalLikes = element.likes;
+  });
 }
 
-//faudrai une idée pour que le nombre de like reste quand on trie, qu'on puisse pas like de nouveau après le tri, mais qu'on puisse like une prmeière fois après tri
-//ATM ca marche comme je veux avant un tri, et après un tri si on a tous liker mais on peux pas liker après un tri
-
 function updateLikes(array) {
-    for (let i = 0; i < array.length; i++) {
-        likeButton[i].addEventListener("click", function (e) {
-            if (likes[i].textContent == array[i].originalLikes) {
-                array[i].likes += 1;
-                totalLikes += 1;
-                likes[i].textContent = array[i].likes;
-                likesTotalNumber[0].textContent = totalLikes;
-            } else {
-                // alert("vous ne pouvez pas liker plusieurs fois une même photo");
-            }
-        });
-    }
+  for (let i = 0; i < array.length; i += 1) {
+    // mettre le click et keydown dans une variable 
+    // eslint-disable-next-line no-loop-func
+    likeButton[i].addEventListener("click", (e) => { 
+      if (parseInt(likes[i].textContent, 10) === array[i].originalLikes) {
+        array[i].likes += 1;
+        totalLikes += 1;
+        likes[i].textContent = array[i].likes;
+        likesTotalNumber[0].textContent = totalLikes;
+      } else {
+        // alert("vous ne pouvez pas liker plusieurs fois une même photo");
+      }
+    });
+    // eslint-disable-next-line no-loop-func
+    likeButton[i].addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        if (parseInt(likes[i].textContent, 10) === array[i].originalLikes) {
+          array[i].likes += 1;
+          totalLikes += 1;
+          likes[i].textContent = array[i].likes;
+          likesTotalNumber[0].textContent = totalLikes;
+        } else {
+          // alert("vous ne pouvez pas liker plusieurs fois une même photo");
+        }
+      }
+    });
+  }
 }

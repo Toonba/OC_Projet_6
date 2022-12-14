@@ -21,6 +21,7 @@ h1 {
 .logo {
     height: 50px;
     margin-left: 100px;
+    margin-top: 20px;
 }
 
 .photographer_section {
@@ -38,8 +39,8 @@ h1 {
 }
 
 .photographer_section a {
-    width: 263;
-    height: 277;
+    width: 350px;
+    height: 277px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="assets/favicon.png" />
-        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
-        <meta name="viewport" content="width=device-width, intial-scale = 1.0" />
-        <link href="./css/style.css" rel="stylesheet" type="text/css" />
-        <title>Fisheye - photographe</title>
-    </head>
-    <body>
-        <header class="main-header">
-            <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye home page" title="Retour à la page d'accueil" /></a>
-        </header>
-        <main id="main" aria-hidden="false">
-            <header class="photograph-header">
-                <!-- <button class="contact_button" aria-haspopup="dialog">Contactez-moi</button> -->
-            </header>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <title>Fisheye - photographe</title>
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye home page" title="Retour à la page d'accueil" /></a>
+    </header>
+    <main id="main" aria-hidden="false">
+      <header class="photograph-header">
+        <!-- <button class="contact_button" aria-haspopup="dialog">Contactez-moi</button> -->
+      </header>
 
-            <!-- <section class="loader">
+      <!-- <section class="loader">
                 <div class="loader-icone-visible">
                     <div class="loader-icone-hidden">
                         <i class="fa-solid fa-image"></i>
@@ -28,65 +28,65 @@
                 </div>
             </section> -->
 
-            <section class="listbox">
-                <p>Trier par</p>
-                <div class="dropdown" role="listbox" aria-expanded="false">
-                    <button class="select" type="button" aria-haspopup="listbox" tabindex="0">
-                        <span class="selected">Popularité</span>
-                        <span class="arrow"></span>
-                    </button>
-                    <ul class="menu" aria-hidden="true">
-                        <li class="active" tabindex="0">Popularité</li>
-                        <li tabindex="0">Date</li>
-                        <li tabindex="0">Titre</li>
-                    </ul>
-                </div>
-            </section>
-            <section class="galery"></section>
+      <section class="listbox">
+        <p>Trier par</p>
+        <div class="dropdown" role="listbox" aria-expanded="false">
+          <button class="select" type="button" aria-haspopup="listbox" tabindex="0">
+            <span class="selected">Popularité</span>
+            <span class="arrow"></span>
+          </button>
+          <ul class="menu" aria-hidden="true">
+            <li class="active"><a class="dropdown-link" href="#" title="Cliquer pour trier les photos par popularité">Popularité</a></li>
+            <li><a class="dropdown-link" href="#" title="Cliquer pour trier les photos par Date">Date</a></li>
+            <li><a class="dropdown-link" href="#" title="Cliquer pour trier les photos par Titre">Titre</a></li>
+          </ul>
+        </div>
+      </section>
+      <section class="galery"></section>
 
-            <aside class="like-invoice">
-                <div class="likes-container">
-                    <p class="likes-total-number"></p>
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <p class="invoice"></p>
-            </aside>
-        </main>
+      <aside class="like-invoice">
+        <div class="likes-container">
+          <p class="likes-total-number" aria-label="Nombre de like total pour ce photographe" tabindex="0"></p>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <p class="invoice" aria-label="Prix chargé par ce photographe" tabindex="0"></p>
+      </aside>
+    </main>
 
-        <!--Contact modal-->
-        <section id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
-            <div class="modal">
-                <header>
-                    <h2 class="modalTitle" id="modalTitle">Contactez-moi</h2>
-                    <button class="close_button"><img src="assets/icons/close.svg" alt="bouton de fermeture" /></button>
-                </header>
-                <form id="myForm" novalidate>
-                    <div>
-                        <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom" required />
-                        <span class="error"></span>
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom" required />
-                        <span class="error"></span>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required />
-                        <span class="error"></span>
-                        <label for="message">Votre message</label>
-                        <textarea name="message" id="message" required></textarea>
-                        <span class="error"></span>
-                    </div>
-                    <input class="btn-submit" type="submit" value="Envoyer" />
-                </form>
-            </div>
-        </section>
-        <script src="scripts/factories/media.js"></script>
-        <script src="scripts/factories/photographer.js"></script>
-        <script src="scripts/utils/sort.js"></script>
-                <script src="./scripts/utils/contactForm.js"></script>
-        <script src="./scripts/utils/LightboxTest.js"></script>
-        <script src="./scripts/utils/likes.js"></script>
-        <script src="./scripts/pages/media.js"></script>
-        <script src="./scripts/pages/photographer.js"></script>
-        <script src="https://kit.fontawesome.com/59d113e09e.js" crossorigin="anonymous"></script>
-    </body>
+    <!--Contact modal-->
+    <section id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+      <div class="modal">
+        <header>
+          <h2 class="modalTitle" id="modalTitle">Contactez-moi</h2>
+          <button class="close_button"><img src="assets/icons/close.svg" alt="bouton de fermeture" /></button>
+        </header>
+        <form id="myForm" novalidate>
+          <div>
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required />
+            <span class="error"></span>
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required />
+            <span class="error"></span>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <span class="error"></span>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" required></textarea>
+            <span class="error"></span>
+          </div>
+          <input class="btn-submit" type="submit" value="Envoyer" />
+        </form>
+      </div>
+    </section>
+    <script src="scripts/factories/media.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/utils/sort.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/LightboxTest.js"></script>
+    <script src="./scripts/utils/likes.js"></script>
+    <script src="./scripts/pages/media.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="https://kit.fontawesome.com/59d113e09e.js" crossorigin="anonymous"></script>
+  </body>
 </html>
