@@ -4,6 +4,7 @@
 const likesTotalNumber = document.getElementsByClassName('likes-total-number')
 const likeButton = document.getElementsByClassName('like-button')
 const likes = document.getElementsByClassName('likes')
+const test = document.getElementsByClassName('main-header')
 
 // variables
 let totalLikes = 0
@@ -15,36 +16,26 @@ function sumLikes(array) {
   return totalLikes
 }
 
-function setOrginalLikes(array) {
-  array.forEach((element) => {
-    element.originalLikes = element.likes
-  })
-}
-
 function updateLikes(array) {
   for (let i = 0; i < array.length; i += 1) {
-    // mettre le click et keydown dans une variable
-    likeButton[i].addEventListener('click', (e) => {
-      if (parseInt(likes[i].textContent, 10) === array[i].originalLikes) {
-        array[i].likes += 1
-        totalLikes += 1
-        likes[i].textContent = array[i].likes
-        likesTotalNumber[0].textContent = totalLikes
-      } else {
-        alert('vous ne pouvez pas liker plusieurs fois une même photo')
-      }
-    })
-    likeButton[i].addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        if (parseInt(likes[i].textContent, 10) === array[i].originalLikes) {
-          array[i].likes += 1
-          totalLikes += 1
-          likes[i].textContent = array[i].likes
+    const myEvent = ['click', 'keydown']
+    myEvent.forEach((evt) => {
+      likeButton[i].addEventListener(evt, (e) => {
+        if ((evt === 'keydown' && e.key === 'Enter') || evt === 'click') {
+          let newLike = parseInt(likes[i].textContent, 10)
+          if (likeButton[i].classList.contains('fa-regular')) {
+            newLike += 1
+            totalLikes += 1
+            likeButton[i].classList.replace('fa-regular', 'fa-solid')
+          } else if (likeButton[i].classList.contains('fa-solid')) {
+            newLike -= 1
+            totalLikes -= 1
+            likeButton[i].classList.replace('fa-solid', 'fa-regular')
+          }
+          likes[i].textContent = newLike
           likesTotalNumber[0].textContent = totalLikes
-        } else {
-          alert('vous ne pouvez pas liker plusieurs fois une même photo')
         }
-      }
+      })
     })
   }
 }

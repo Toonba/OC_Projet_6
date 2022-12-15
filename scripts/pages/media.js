@@ -38,7 +38,6 @@ async function init() {
   getMediaById(media)
   displayGallery(mediaById, 'Popularité')
   sumLikes(mediaById)
-  setOrginalLikes(mediaById)
 }
 
 init()
