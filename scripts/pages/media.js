@@ -1,45 +1,44 @@
+/* eslint-disable no-undef */
+/* eslint-disable space-before-function-paren */
 async function getPhotographersMedia() {
-  const response = await fetch("data/photographers.json");
-  return response.json();
+  const response = await fetch('data/photographers.json')
+  return response.json()
 }
-const mediaById = [];
+const mediaById = []
 function getMediaById(array) {
-  const urlId = new URLSearchParams(window.location.search).get("id");
+  const urlId = new URLSearchParams(window.location.search).get('id')
   for (let i = 0; i < array.length; i += 1) {
     if (parseInt(urlId, 10) === array[i].photographerId) {
-      mediaById.push(array[i]);
+      mediaById.push(array[i])
     }
   }
-  return mediaById;
+  return mediaById
 }
 
 // Est ce que c'est vraiment nécéssaire le async ici ?
 function displayGallery(array, filter) {
   // eslint-disable-next-line
-  sortGalery(array, filter);
-  const sectionGalery = document.querySelector(".galery");
-  sectionGalery.innerHTML = "";
+  sortGalery(array, filter)
+  const sectionGalery = document.querySelector('.galery')
+  sectionGalery.innerHTML = ''
   array.forEach((element) => {
     // eslint-disable-next-line
-    const photographerMedia = galleryFactory(element);
-    const mediaCardDOM = photographerMedia.getPhotographeGaleryDOM();
-    sectionGalery.appendChild(mediaCardDOM);
-  });
+    const photographerMedia = galleryFactory(element)
+    const mediaCardDOM = photographerMedia.getPhotographeGaleryDOM()
+    sectionGalery.appendChild(mediaCardDOM)
+  })
   // eslint-disable-next-line
-  Lightbox.init();
+  Lightbox.init()
   // eslint-disable-next-line
-  updateLikes(array);
+  updateLikes(array)
 }
 
 async function init() {
-  // prettier-ignore
-  const { media } = await getPhotographersMedia();
-  getMediaById(media);
-  displayGallery(mediaById, "Popularité");
-  // eslint-disable-next-line
-  sumLikes(mediaById);
-  // eslint-disable-next-line
-  setOrginalLikes(mediaById);
+  const { media } = await getPhotographersMedia()
+  getMediaById(media)
+  displayGallery(mediaById, 'Popularité')
+  sumLikes(mediaById)
+  setOrginalLikes(mediaById)
 }
 
-init();
+init()
