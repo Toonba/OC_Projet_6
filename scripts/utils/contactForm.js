@@ -46,21 +46,21 @@ const emailRegEx = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 // add specific layout if an input isn't valid
 function notValid(InputProperties) {
-  error[InputinputProperties.span].style.display = 'block'
-  InputinputProperties.input.style.border = '2px solid rgb(200, 1, 1)'
-  InputinputProperties.input.style.animation = 'nop 0.2s 3'
-  error[InputinputProperties.span].innerHTML = InputinputProperties.message
-  InputinputProperties.input.setAttribute('aria-invalid', 'true')
-  error[InputinputProperties.span].setAttribute('tabindex', '0')
-  error[InputinputProperties.span].focus()
+  error[InputProperties.span].style.display = 'block'
+  InputProperties.input.style.border = '2px solid rgb(200, 1, 1)'
+  InputProperties.input.style.animation = 'nop 0.2s 3'
+  error[InputProperties.span].innerHTML = InputProperties.message
+  InputProperties.input.setAttribute('aria-invalid', 'true')
+  error[InputProperties.span].setAttribute('tabindex', '-1')
+  error[InputProperties.span].focus()
 }
 
 // Remove specific layout once an input is valid
 function isValid(InputProperties) {
-  error[InputinputProperties.span].style.display = 'none'
-  InputinputProperties.input.style.border = 'none'
+  error[InputProperties.span].style.display = 'none'
+  InputProperties.input.style.border = 'none'
   validationState.push(true)
-  InputinputProperties.input.setAttribute('aria-invalid', 'false')
+  InputProperties.input.setAttribute('aria-invalid', 'false')
 }
 
 // function openning modal and adding accessible attribute
@@ -68,7 +68,7 @@ function displayModal() {
   modal.style.display = 'block'
   main.setAttribute('aria-hidden', 'true')
   modal.setAttribute('aria-hidden', 'false')
-  prenom.input.focus()
+  inputPrenom.focus()
   myInput.forEach((element) => {
     isValid(element)
   })
@@ -77,25 +77,25 @@ function displayModal() {
 // function closing modal and adding accessible attribute
 function closeModal() {
   modal.style.display = 'none'
+  myForm.reset()
   main.setAttribute('aria-hidden', 'false')
   modal.setAttribute('aria-hidden', 'true')
-  modalBody[0].removeAttribute('tabindex', '0')
-  myForm.reset()
+  contactButton[0].focus()
 }
 
 // function that check the validity of input
-function inputValidation(InputinputProperties) {
-  if (InputinputProperties.type === 'text') {
-    if (InputinputProperties.input.value === '' || InputinputProperties.input.value.length < 2 || InputinputProperties.input.value.trim() === false) {
-      notValid(InputinputProperties)
+function inputValidation(InputProperties) {
+  if (InputProperties.type === 'text') {
+    if (InputProperties.input.value === '' || InputProperties.input.value.length < 2 || InputProperties.input.value.trim() === false) {
+      notValid(InputProperties)
     } else {
-      isValid(InputinputProperties)
+      isValid(InputProperties)
     }
-  } else if (InputinputProperties.type === 'mail') {
-    if (InputinputProperties.input.value === '' || !InputinputProperties.input.value.match(emailRegEx)) {
-      notValid(InputinputProperties)
+  } else if (InputProperties.type === 'mail') {
+    if (InputProperties.input.value === '' || !InputProperties.input.value.match(emailRegEx)) {
+      notValid(InputProperties)
     } else {
-      isValid(InputinputProperties)
+      isValid(InputProperties)
     }
   }
 }
@@ -122,7 +122,7 @@ function modalEvent() {
   })
   // close with keyboard
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
       e.preventDefault()
       closeModal(e)
     }

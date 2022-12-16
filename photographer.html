@@ -13,9 +13,8 @@
     <header class="main-header">
       <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye home page" title="Retour à la page d'accueil" /></a>
     </header>
-    <main id="main" aria-hidden="false">
-      <header class="photograph-header">
-      </header>
+    <main id="main" aria-hidden="false" tabindex="-1">
+      <header class="photograph-header"></header>
 
       <!-- <section class="loader">
                 <div class="loader-icone-visible">
@@ -53,7 +52,7 @@
     </main>
 
     <!--Contact modal-->
-    <section id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
+    <section id="contact_modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true" tabindex="-1">
       <div class="modal">
         <header>
           <h2 class="modalTitle" id="modalTitle">Contactez-moi</h2>

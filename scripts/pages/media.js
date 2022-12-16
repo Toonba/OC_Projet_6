@@ -34,7 +34,6 @@ async function init() {
   setOrginalLikes(mediaById)
   displayGallery(mediaById, 'Popularité')
   sumLikes(mediaById)
-  console.log(mediaById)
 }
 
 init()

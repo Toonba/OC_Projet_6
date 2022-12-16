@@ -11,6 +11,7 @@ const arrow = document.querySelector('.arrow')
 const menu = document.querySelector('.menu')
 const options = document.querySelectorAll('.menu li')
 const selected = document.querySelector('.selected')
+const media = document.querySelectorAll('.lightbox-media')
 
 // function to open the dropdown and handle his accessibility
 function openDropdown() {

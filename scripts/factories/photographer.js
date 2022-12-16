@@ -12,7 +12,7 @@ function photographerFactory(data) {
 
   function getPhotograpHeaderDOM() {
     const photograpHeader = document.getElementsByClassName('photograph-header')
-    photograpHeader[0].innerHTML = `<div class="description-container"><h2>${name}</h2><h3>${city}, ${country}</h3><p>${tagline}</p></div><button class="contact_button" aria-haspopup="dialog">Contactez-moi</button>
+    photograpHeader[0].innerHTML = `<div class="description-container"><h2>${name}</h2><h3>${city}, ${country}</h3><p>${tagline}</p></div><button class="contact_button" aria-haspopup="dialog" tabindex="0">Contactez-moi</button>
         <div class="img-container"><img src="${picture}" alt="photo de profile de : ${name}"></div>`
     const invoice = document.querySelector('.invoice')
     invoice.textContent = `${price}€ / jour`

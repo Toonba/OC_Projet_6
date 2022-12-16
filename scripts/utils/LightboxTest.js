@@ -1,7 +1,3 @@
-// Faire lightbox et gallery avec figure et chercher ptoentiel bug sur firefox
-// https://www.alsacreations.com/article/lire/1337-html5-elements-figure-et-figcaption.html
-// AC checker verifier l'erreur
-
 /* eslint-disable space-before-function-paren */
 
 /**
