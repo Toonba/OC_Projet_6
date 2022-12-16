@@ -23,7 +23,7 @@ const messageErreurMail = 'Vous devez renseigner une adresse mail valide'
 const messageErreurTextarea = 'Vous ne pouvez pas envoyer un message vide'
 
 // objet input, each Input object represent all the data related to 1 input and needed for the validation and layout validation of this input.
-class Obj {
+class InputProperties {
   constructor(input, type, span, message) {
     this.input = input
     this.type = type
@@ -31,10 +31,10 @@ class Obj {
     this.message = message
   }
 }
-const prenom = new Obj(inputPrenom, 'text', 0, messageErreurPrenom)
-const nom = new Obj(inputNom, 'text', 1, messageErreurNom)
-const email = new Obj(inputEmail, 'mail', 2, messageErreurMail)
-const textarea = new Obj(inputTextarea, 'text', 3, messageErreurTextarea)
+const prenom = new InputProperties(inputPrenom, 'text', 0, messageErreurPrenom)
+const nom = new InputProperties(inputNom, 'text', 1, messageErreurNom)
+const email = new InputProperties(inputEmail, 'mail', 2, messageErreurMail)
+const textarea = new InputProperties(inputTextarea, 'text', 3, messageErreurTextarea)
 
 // Variable
 const myInput = [prenom, nom, email, textarea]
@@ -45,24 +45,22 @@ let validationState = []
 const emailRegEx = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 // add specific layout if an input isn't valid
-function notValid(objInput) {
-  const obj = objInput
-  error[obj.span].style.display = 'block'
-  obj.input.style.border = '2px solid rgb(200, 1, 1)'
-  obj.input.style.animation = 'nop 0.2s 3'
-  error[obj.span].innerHTML = obj.message
-  obj.input.setAttribute('aria-invalid', 'true')
-  error[obj.span].setAttribute('tabindex', '0')
-  error[obj.span].focus()
+function notValid(InputProperties) {
+  error[InputinputProperties.span].style.display = 'block'
+  InputinputProperties.input.style.border = '2px solid rgb(200, 1, 1)'
+  InputinputProperties.input.style.animation = 'nop 0.2s 3'
+  error[InputinputProperties.span].innerHTML = InputinputProperties.message
+  InputinputProperties.input.setAttribute('aria-invalid', 'true')
+  error[InputinputProperties.span].setAttribute('tabindex', '0')
+  error[InputinputProperties.span].focus()
 }
 
 // Remove specific layout once an input is valid
-function isValid(objInput) {
-  const obj = objInput
-  error[obj.span].style.display = 'none'
-  obj.input.style.border = 'none'
+function isValid(InputProperties) {
+  error[InputinputProperties.span].style.display = 'none'
+  InputinputProperties.input.style.border = 'none'
   validationState.push(true)
-  obj.input.setAttribute('aria-invalid', 'false')
+  InputinputProperties.input.setAttribute('aria-invalid', 'false')
 }
 
 // function openning modal and adding accessible attribute
@@ -86,18 +84,18 @@ function closeModal() {
 }
 
 // function that check the validity of input
-function inputValidation(obj) {
-  if (obj.type === 'text') {
-    if (obj.input.value === '' || obj.input.value.length < 2 || obj.input.value.trim() === false) {
-      notValid(obj)
+function inputValidation(InputinputProperties) {
+  if (InputinputProperties.type === 'text') {
+    if (InputinputProperties.input.value === '' || InputinputProperties.input.value.length < 2 || InputinputProperties.input.value.trim() === false) {
+      notValid(InputinputProperties)
     } else {
-      isValid(obj)
+      isValid(InputinputProperties)
     }
-  } else if (obj.type === 'mail') {
-    if (obj.input.value === '' || !obj.input.value.match(emailRegEx)) {
-      notValid(obj)
+  } else if (InputinputProperties.type === 'mail') {
+    if (InputinputProperties.input.value === '' || !InputinputProperties.input.value.match(emailRegEx)) {
+      notValid(InputinputProperties)
     } else {
-      isValid(obj)
+      isValid(InputinputProperties)
     }
   }
 }

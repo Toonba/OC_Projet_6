@@ -8,6 +8,8 @@ const test = document.getElementsByClassName('main-header')
 
 // variables
 let totalLikes = 0
+
+// function to calcuate total like
 function sumLikes(array) {
   array.forEach((element) => {
     totalLikes += element.likes
@@ -16,6 +18,14 @@ function sumLikes(array) {
   return totalLikes
 }
 
+// function to add the original number of like as object property
+function setOrginalLikes(array) {
+  array.forEach((element) => {
+    element.originalLikes = element.likes
+  })
+}
+
+// function to update number of like once user click on heart
 function updateLikes(array) {
   for (let i = 0; i < array.length; i += 1) {
     const myEvent = ['click', 'keydown']
@@ -32,6 +42,7 @@ function updateLikes(array) {
             totalLikes -= 1
             likeButton[i].classList.replace('fa-solid', 'fa-regular')
           }
+          array[i].likes = newLike
           likes[i].textContent = newLike
           likesTotalNumber[0].textContent = totalLikes
         }

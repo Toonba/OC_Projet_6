@@ -15,29 +15,26 @@ function getMediaById(array) {
   return mediaById
 }
 
-// Est ce que c'est vraiment nécéssaire le async ici ?
 function displayGallery(array, filter) {
-  // eslint-disable-next-line
   sortGalery(array, filter)
   const sectionGalery = document.querySelector('.galery')
   sectionGalery.innerHTML = ''
   array.forEach((element) => {
-    // eslint-disable-next-line
     const photographerMedia = galleryFactory(element)
     const mediaCardDOM = photographerMedia.getPhotographeGaleryDOM()
     sectionGalery.appendChild(mediaCardDOM)
   })
-  // eslint-disable-next-line
   Lightbox.init()
-  // eslint-disable-next-line
   updateLikes(array)
 }
 
 async function init() {
   const { media } = await getPhotographersMedia()
   getMediaById(media)
+  setOrginalLikes(mediaById)
   displayGallery(mediaById, 'Popularité')
   sumLikes(mediaById)
+  console.log(mediaById)
 }
 
 init()

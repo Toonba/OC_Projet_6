@@ -1,9 +1,6 @@
 // Faire lightbox et gallery avec figure et chercher ptoentiel bug sur firefox
 // https://www.alsacreations.com/article/lire/1337-html5-elements-figure-et-figcaption.html
-// utiliser la config par deffaut de ESlint
-// changer le nom des variables qui sont peu claire (surtout le Obj)
 // AC checker verifier l'erreur
-// voir pour faire une incrémentation décrémentation pour les likes(optionnel)
 
 /* eslint-disable space-before-function-paren */
 
