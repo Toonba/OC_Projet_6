@@ -144,7 +144,7 @@ class Lightbox {
     const main = document.getElementById('main')
     main.setAttribute('aria-hidden', 'true')
     section.setAttribute('aria-hidden', 'false')
-    section.innerHTML = ` <div class="lightbox-body">
+    section.innerHTML = ` <div class="lightbox-body" arialabel="image close up view">
         <button class="lightbox-close-button" tabindex="0" aria-label="Ferme la lightbox"><i class="fa-solid fa-xmark"></i></button>
         <button class="previous" tabindex="0" aria-label="Passer au media precedent"><i class="fa-solid fa-chevron-left"></i></button>
         <figure class="current" tabindex="0"></figure>

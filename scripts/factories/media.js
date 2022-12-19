@@ -20,10 +20,10 @@ function galleryFactory(data) {
     const figure = document.createElement('figure')
     figure.className = 'media-container'
     if (image !== undefined) {
-      figure.innerHTML = `<img class="lightbox-media" src="${picture}" role="button" alt="${title}" tabindex="0" ><figcaption class="mediaDescription-container"><p>${title}</p><div class="likes-container"><span class="likes">${numberOfLike}</span><span class="${heartType} fa-heart like-button" tabindex="0" role="button" aria-label="Bouton j'aime"></span></div></figcaption>`
+      figure.innerHTML = `<img class="lightbox-media" src="${picture}" role="link" alt="${title}" tabindex="0" ><figcaption class="mediaDescription-container"><p>${title}</p><div class="likes-container"><span class="likes">${numberOfLike}</span><span class="${heartType} fa-heart like-button" tabindex="0" role="button" aria-label="Bouton j'aime"></span></div></figcaption>`
     }
     if (video !== undefined) {
-      figure.innerHTML = `<video class="lightbox-media" controle="" src="${mp4}" role="button" alt="${title}" tabindex="0"></video><figcaption class="mediaDescription-container"><p>${title}</p><div class="likes-container"><span class="likes">${numberOfLike}</span><span class="${heartType} fa-heart like-button" tabindex="0" role="button" aria-label="Bouton j'aime"></span></div></figcaption>`
+      figure.innerHTML = `<video class="lightbox-media" controle="" src="${mp4}" role="link" alt="${title}" tabindex="0"></video><figcaption class="mediaDescription-container"><p>${title}</p><div class="likes-container"><span class="likes">${numberOfLike}</span><span class="${heartType} fa-heart like-button" tabindex="0" role="button" aria-label="Bouton j'aime"></span></div></figcaption>`
     }
     return figure
   }
