@@ -30,6 +30,7 @@ function closeDropdown() {
   options.forEach((option) => option.classList.remove('active'))
   dropdown.setAttribute('aria-expanded', 'false')
   menu.setAttribute('aria-hidden', 'true')
+  select.focus()
 }
 
 // Event to show dropdown

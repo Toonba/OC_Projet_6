@@ -4,6 +4,8 @@ function galleryFactory(data) {
   const { id, title, photographerId, image, likes, originalLikes, date, price, video } = data
   const picture = `assets/photographers/${photographerId}/${image}`
   const mp4 = `assets/photographers/${photographerId}/${video}`
+
+  // Variable used to keep number of like even when user sort medias
   let numberOfLike = 0
   let heartType = ''
 

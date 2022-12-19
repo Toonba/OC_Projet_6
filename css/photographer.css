@@ -3,7 +3,7 @@
 }
 /*main Header*/
 .main-header {
-  width: 88%;
+  width: 90%;
   margin: 0 auto;
 }
 .main-header img {
@@ -168,7 +168,7 @@ form .error {
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  width: 88%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
