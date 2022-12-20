@@ -1,13 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable space-before-function-paren */
-
 // DOM Element
 const main = document.getElementById('main')
 const modal = document.getElementById('contact_modal')
 const contactButton = document.getElementsByClassName('contact_button')
 const closeButton = document.getElementsByClassName('close_button')
-const modalBody = document.getElementsByClassName('modal')
 const inputPrenom = document.getElementById('prenom')
 const inputNom = document.getElementById('nom')
 const inputEmail = document.getElementById('email')
@@ -107,6 +102,7 @@ myInput.forEach((element) => {
   })
 })
 
+// used in files ../pages/photographer.js
 // eslint-disable-next-line no-unused-vars
 function modalEvent() {
   // open modal with mouse

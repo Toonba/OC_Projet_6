@@ -180,17 +180,18 @@ form .error {
 }
 .photograph-header h2 {
   color: #d3573c;
-  font-size: 2rem;
+  font-size: 64px;
   margin: 0.5rem 0 0 0;
 }
 
 .photograph-header h3 {
-  font-size: 1.2rem;
+  font-size: 24px;
   margin: 0;
   color: #901c1c;
 }
 .photograph-header .description-container p {
-  font-size: 0.7rem;
+  font-size: 18px;
+  color: #525252;
 }
 
 figcaption p,
@@ -314,11 +315,12 @@ figcaption p,
   width: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 1rem;
+  justify-content: space-between;
+  column-gap: 5rem;
+  row-gap: 3rem;
 }
 .media-container {
-  width: 32%;
+  width: 27%;
   margin: 0;
 }
 .media-container img,

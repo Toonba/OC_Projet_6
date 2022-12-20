@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable space-before-function-paren */
 // DOM
 const likesTotalNumber = document.getElementsByClassName('likes-total-number')
 const likeButton = document.getElementsByClassName('like-button')
 const likes = document.getElementsByClassName('likes')
-const test = document.getElementsByClassName('main-header')
 
 // variables
 let totalLikes = 0
 
 // function to calcuate total like
+// used in files ../pages/media.js
+// eslint-disable-next-line no-unused-vars
 function sumLikes(array) {
   array.forEach((element) => {
     totalLikes += element.likes
@@ -19,6 +18,8 @@ function sumLikes(array) {
 }
 
 // function to add the original number of like as object property
+// used in files ../pages/media.js
+// eslint-disable-next-line no-unused-vars
 function setOrginalLikes(array) {
   array.forEach((element) => {
     element.originalLikes = element.likes
@@ -26,6 +27,8 @@ function setOrginalLikes(array) {
 }
 
 // function to update number of like once user click on heart
+// used in files ../pages/media.js
+// eslint-disable-next-line no-unused-vars
 function updateLikes(array) {
   for (let i = 0; i < array.length; i += 1) {
     const myEvent = ['click', 'keydown']

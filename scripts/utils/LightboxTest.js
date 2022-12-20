@@ -1,4 +1,4 @@
-/* eslint-disable space-before-function-paren */
+
 
 /**
  * @property {HTMLElement} element
@@ -7,6 +7,7 @@
  * @property {string} url Image actuellement affichée
  */
 
+// used in files ../pages/media.js
 // eslint-disable-next-line no-unused-vars
 class Lightbox {
   static init() {
@@ -16,13 +17,11 @@ class Lightbox {
     medias.forEach((media) => {
       media.addEventListener('click', (e) => {
         e.preventDefault()
-        // eslint-disable-next-line no-new
         new Lightbox(e.currentTarget.getAttribute('src'), gallery, e.currentTarget.getAttribute('alt'), titleList)
       })
       media.addEventListener('keydown', (e) => {
         if (e.keyCode === 13) {
           e.preventDefault()
-          // eslint-disable-next-line no-new
           new Lightbox(e.currentTarget.getAttribute('src'), gallery, e.currentTarget.getAttribute('alt'), titleList)
         }
       })

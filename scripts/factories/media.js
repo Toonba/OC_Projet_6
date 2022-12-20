@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable space-before-function-paren */
+// used in files ../pages/media.js
+// eslint-disable-next-line no-unused-vars
 function galleryFactory(data) {
   const { id, title, photographerId, image, likes, originalLikes, date, price, video } = data
   const picture = `assets/photographers/${photographerId}/${image}`

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable space-before-function-paren */
 async function getPhotographers() {
   const response = await fetch('data/photographers.json')
   return response.json()

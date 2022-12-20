@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable space-before-function-paren */
-
 // Get dropdowns from the doc
 const dropdown = document.querySelector('.dropdown')
 
@@ -11,7 +7,6 @@ const arrow = document.querySelector('.arrow')
 const menu = document.querySelector('.menu')
 const options = document.querySelectorAll('.menu li')
 const selected = document.querySelector('.selected')
-const media = document.querySelectorAll('.lightbox-media')
 
 // function to open the dropdown and handle his accessibility
 function openDropdown() {
@@ -62,6 +57,8 @@ options.forEach((element) => {
 })
 
 // sorting function
+// used in files ../pages/media.js
+// eslint-disable-next-line no-unused-vars
 function sortGalery(array, filter) {
   switch (filter) {
     case 'Popularité':
