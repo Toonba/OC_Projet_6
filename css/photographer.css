@@ -323,6 +323,11 @@ figcaption p,
   width: 27%;
   margin: 0;
 }
+.galery::after {
+  content: '';
+  width: 27%;
+  margin: 0;
+}
 .media-container img,
 .media-container video {
   aspect-ratio: 1/1;

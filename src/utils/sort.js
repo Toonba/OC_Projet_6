@@ -1,4 +1,4 @@
-"use strict";
+import { displayGallery, mediaById } from '../pages/index.js';
 // Get dropdowns from the doc
 const dropdown = document.querySelector('.dropdown');
 // get inner elements from each dropdown
@@ -27,14 +27,16 @@ function closeDropdown() {
     select.focus();
 }
 // Event to show dropdown
-select.addEventListener('click', () => {
-    openDropdown();
-});
-select.addEventListener('keydown', (e) => {
-    if (e.key === 'Space') {
+if (select) {
+    select.addEventListener('click', () => {
         openDropdown();
-    }
-});
+    });
+    select.addEventListener('keydown', (e) => {
+        if (e.key === 'Space') {
+            openDropdown();
+        }
+    });
+}
 // Hide dropdown, sort gallery and replace the filter by the option choosed
 options.forEach((element) => {
     element.addEventListener('click', handleClick);
@@ -57,7 +59,7 @@ function handleKeyDown(e) {
     }
 }
 // sorting function
-function sortGalery(array, filter) {
+export function sortGalery(array, filter) {
     switch (filter) {
         case 'Popularité':
             array.sort((a, b) => {

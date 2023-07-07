@@ -1,3 +1,5 @@
+import { displayGallery, mediaById } from '../pages/index.js'
+
 // Get dropdowns from the doc
 const dropdown = document.querySelector('.dropdown')!
 
@@ -29,14 +31,16 @@ function closeDropdown() {
 }
 
 // Event to show dropdown
-select.addEventListener('click', () => {
-  openDropdown()
-})
-select.addEventListener('keydown', (e) => {
-  if (e.key === 'Space') {
+if (select) {
+  select.addEventListener('click', () => {
     openDropdown()
-  }
-})
+  })
+  select.addEventListener('keydown', (e) => {
+    if (e.key === 'Space') {
+      openDropdown()
+    }
+  })
+}
 
 // Hide dropdown, sort gallery and replace the filter by the option choosed
 options.forEach((element) => {
@@ -49,7 +53,7 @@ function handleClick(this: HTMLElement) {
   selected.textContent = element.textContent
   closeDropdown()
   element.classList.add('active')
-  displayGallery(mediaById, element.textContent)
+  displayGallery(mediaById, element.textContent!)
 }
 
 function handleKeyDown(this: HTMLElement, e: KeyboardEvent) {
@@ -58,7 +62,7 @@ function handleKeyDown(this: HTMLElement, e: KeyboardEvent) {
     selected.textContent = element.textContent
     closeDropdown()
     element.classList.add('active')
-    displayGallery(mediaById, element.textContent)
+    displayGallery(mediaById, element.textContent!)
   }
 }
 
@@ -69,7 +73,7 @@ interface SortableMedia {
 }
 
 // sorting function
-function sortGalery(array: SortableMedia[], filter: string) {
+export function sortGalery(array: SortableMedia[], filter: string) {
   switch (filter) {
     case 'Popularité':
       array.sort((a, b) => {

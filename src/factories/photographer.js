@@ -1,7 +1,6 @@
-"use strict";
 // used in files ../pages/index.js
 // eslint-disable-next-line no-unused-vars
-function photographerFactory(data) {
+export function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`;
     function getUserCardDOM() {

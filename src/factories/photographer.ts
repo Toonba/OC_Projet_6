@@ -1,7 +1,7 @@
 // used in files ../pages/index.js
 // eslint-disable-next-line no-unused-vars
 
-interface Photographer {
+export interface Photographer {
   id: number
   name: string
   city: string
@@ -16,7 +16,7 @@ interface PhotographerFactory extends Photographer {
   getPhotographeHeaderDOM: () => HTMLElement
 }
 
-function photographerFactory(data: Photographer) {
+export function photographerFactory(data: Photographer) {
   const { name, id, city, country, tagline, price, portrait } = data
   const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`
 

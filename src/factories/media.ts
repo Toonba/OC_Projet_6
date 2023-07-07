@@ -1,7 +1,7 @@
 // used in files ../pages/media.js
 // eslint-disable-next-line no-unused-vars
 
-interface Media {
+export interface Media {
   id: number
   title: string
   photographerId: number
@@ -17,7 +17,7 @@ interface GalleryData extends Media {
   getPhotographeGaleryDOM: () => HTMLElement
 }
 
-function galleryFactory(data: Media): GalleryData {
+export function galleryFactory(data: Media): GalleryData {
   const { id, title, photographerId, image, likes, originalLikes, date, price, video } = data
   const picture = `assets/photographers/${photographerId}/${image}`
   const mp4 = `assets/photographers/${photographerId}/${video}`

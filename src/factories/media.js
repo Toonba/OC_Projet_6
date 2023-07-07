@@ -1,7 +1,6 @@
-"use strict";
 // used in files ../pages/media.js
 // eslint-disable-next-line no-unused-vars
-function galleryFactory(data) {
+export function galleryFactory(data) {
     const { id, title, photographerId, image, likes, originalLikes, date, price, video } = data;
     const picture = `assets/photographers/${photographerId}/${image}`;
     const mp4 = `assets/photographers/${photographerId}/${video}`;
